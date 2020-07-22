@@ -18,10 +18,10 @@ function removeTodo(target) {
 
 // check list status
 function checkListStatus() {
-  if (list.hasChildNodes()) {
-    document.querySelector("h5").style.display = "none";
+  if (list.childElementCount === 0) {
+    endMsg.style.display = "block";
   } else {
-    document.querySelector("h5").style.display = "block !important";
+    endMsg.style.display = "none";
   }
 }
 
@@ -44,3 +44,5 @@ list.addEventListener("click", (e) => {
     checkListStatus();
   }
 });
+
+checkListStatus();
