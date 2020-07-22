@@ -17,7 +17,7 @@ input[type="text"]:focus {
 .delete {
   cursor: pointer;
 }
-
+/* 
 .endMsg {
   display: none;
-}
+} */

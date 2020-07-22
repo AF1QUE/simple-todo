@@ -16,6 +16,15 @@ function removeTodo(target) {
   target.parentElement.remove();
 }
 
+// check list status
+function checkListStatus() {
+  if (list.hasChildNodes()) {
+    document.querySelector("h5").style.display = "none";
+  } else {
+    document.querySelector("h5").style.display = "block !important";
+  }
+}
+
 // Adding a todo event
 addForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -23,6 +32,7 @@ addForm.addEventListener("submit", (e) => {
   if (addForm.add.value.trim().length > 0) {
     populateList(todo);
     addForm.reset();
+    checkListStatus();
   }
 });
 
@@ -31,5 +41,6 @@ list.addEventListener("click", (e) => {
   e.preventDefault();
   if (e.target.classList.contains("delete")) {
     removeTodo(e.target);
+    checkListStatus();
   }
 });
