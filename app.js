@@ -2,6 +2,7 @@
 const list = document.querySelector(".todo-list");
 const addForm = document.querySelector(".add");
 const endMsg = document.querySelector(".endMsg");
+const search = document.querySelector(".search input");
 
 // Populate todo list function
 function populateList(todo) {
@@ -10,7 +11,7 @@ function populateList(todo) {
                 <i class="far fa-trash-alt delete"></i>
             </li>`;
 }
-
+("");
 // Remove a todo function
 function removeTodo(target) {
   target.parentElement.remove();
@@ -23,6 +24,17 @@ function checkListStatus() {
   } else {
     endMsg.style.display = "none";
   }
+}
+
+// filter todo function
+function filterTodo(term) {
+  Array.from(list.children)
+    .filter((todo) => !todo.textContent.toLocaleLowerCase().includes(term))
+    .forEach((todo) => todo.classList.add("filtered"));
+
+  Array.from(list.children)
+    .filter((todo) => todo.textContent.toLowerCase().includes(term))
+    .forEach((todo) => todo.classList.remove("filtered"));
 }
 
 // Adding a todo event
@@ -45,4 +57,10 @@ list.addEventListener("click", (e) => {
   }
 });
 
-checkListStatus();
+// Tasklist filtering
+search.addEventListener("keyup", () => {
+  let term = search.value.trim().toLowerCase();
+  filterTodo(term);
+});
+
+// checkListStatus();

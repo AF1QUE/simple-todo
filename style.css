@@ -21,3 +21,7 @@ input[type="text"]:focus {
 .endMsg {
   display: none;
 }
+
+.filtered {
+  display: none !important;
+}
